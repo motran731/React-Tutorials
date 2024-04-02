@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
 function App() {
-  //let time = new Date().toLocaleTimeString();
-
+  setInterval(updateTime, 1000);
   const now = new Date().toLocaleTimeString("en-US", { hour12: false });
 
-  const [time, setTIme] = useState(now);
+  const [time, setTime] = useState(now);
 
   function updateTime() {
     const newTime = new Date().toLocaleTimeString("en-US", { hour12: false });
-    setTimeout(newTime);
+
+    setTime(newTime);
   }
 
   return (
