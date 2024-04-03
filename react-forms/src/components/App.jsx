@@ -12,6 +12,8 @@ function App() {
 
   function handleSubmit(event) {
     setHeadingText(name);
+
+    event.preventDefault();
   }
 
   function handleMouseOver() {
