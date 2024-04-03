@@ -2,9 +2,16 @@ import React, { useState } from "react";
 
 function App() {
   const [isMouseOver, setMouseOver] = useState(false);
+  const [name, setName] = useState("");
+  const [headingText, setHeadingText] = useState("");
 
-  function handleSubmit() {
-    console.log("clicked");
+  function handleChange(event) {
+    console.log(event.target.value);
+    setName(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    setHeadingText(name);
   }
 
   function handleMouseOver() {
@@ -15,11 +22,14 @@ function App() {
     setMouseOver(false);
   }
 
-  function onMouseOver() {}
   return (
     <div className="container">
-      <h1>Hello </h1>
-      <input type="text" placeholder="What's your name?" />
+      <h1>Hello {headingText}</h1>
+      <input
+        onChange={handleChange}
+        type="text"
+        placeholder="What's your name?"
+      />
       <button
         onClick={handleSubmit}
         style={{ background: isMouseOver ? "black" : "white" }}
