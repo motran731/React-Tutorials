@@ -1,1 +1,10 @@
 node_modules
+/.next/
+/node_modules
+.DS_Store
+.vscode
+.env*.local
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*
