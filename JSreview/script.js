@@ -185,3 +185,11 @@ console.log(x);
 
 const titles = books.map((bookEl) => bookEl.title);
 titles;
+
+const essentialData = books.map((book) => ({
+  return {
+    title: book.title,
+    author: book.author,
+  };
+}));
+essentialData;
