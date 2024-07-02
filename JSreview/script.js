@@ -167,5 +167,11 @@ console.log(primaryGenre, secondaryGenre, otherGenres);
 const newGenres = ["epic fantasy", ...genres];
 newGenres;
 
-const updatedBook = { ...book, moviePublicationDate: "2001-12-19" };
+const updatedBook = {
+  ...book,
+  //adding a new property
+  moviePublicationDate: "2001-12-19",
+  //overwriting an existing property
+  pages: 5000,
+};
 updatedBook;
