@@ -143,8 +143,8 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+/*
 //Destructuring
-
 const book = getBook(1);
 book;
 // const title = book.title;
@@ -175,3 +175,13 @@ const updatedBook = {
   pages: 5000,
 };
 updatedBook;
+*/
+//array map method
+const books = getBooks();
+books;
+
+const x = [1, 2, 3, 4].map((element) => element * 5);
+console.log(x);
+
+const titles = books.map((bookEl) => bookEl.title);
+titles;
