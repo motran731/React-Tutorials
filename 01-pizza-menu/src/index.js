@@ -85,11 +85,19 @@ function Footer() {
   return (
     <footer className="footer">
       {/* {new Date().toLocaleTimeString()}, We are OPEN */}
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
-          <p> We're open until {closeHour}:00. Come visit us or order online</p>
+          <p>
+            {" "}
+            We're open until {closeHour}:00. Come visit us or order online.{" "}
+          </p>
           <button className="btn"> Order</button>{" "}
         </div>
+      ) : (
+        <p>
+          {" "}
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00.
+        </p>
       )}
     </footer>
   );
