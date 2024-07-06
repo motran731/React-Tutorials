@@ -71,14 +71,14 @@ function Pizza({ pizzaObj }) {
   //if (pizzaObj.soldOut) return null;
 
   return (
-    <div className="pizza">
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.name} />
-      <li>
+      <div>
         <h3> {pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
         <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
-      </li>
-    </div>
+      </div>
+    </li>
   );
 }
 function Footer() {
