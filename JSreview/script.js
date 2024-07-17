@@ -194,6 +194,6 @@ const essentialData = books.map((book) => ({
 }));
 essentialData;
 
-//ternaries instead of if/ese statements
+//ternaries instead of if/else statements
 const pagesRange = pages >1000 ? "over a thousand" : "less than 1000";
 pagesRange;
