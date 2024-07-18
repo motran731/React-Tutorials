@@ -31,7 +31,12 @@ function Accordion({ data }) {
   return (
     <div className="accordion">
       {data.map((el, index) => (
-        <AccordionItem title={el.title} text={el.text} num={index} />
+        <AccordionItem
+          title={el.title}
+          text={el.text}
+          num={index}
+          key={el.title}
+        />
       ))}
     </div>
   );
@@ -39,8 +44,12 @@ function Accordion({ data }) {
 
 function AccordionItem({ num, title, text }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  function handleToggle() {
+    setIsOpen((isOpen) => !isOpen);
+  }
   return (
-    <div className="item">
+    <div className={`item ${isOpen ? "open" : ""}`} onClick={handleToggle}>
       <p className="number"> {num < 9 ? `0${num + 1}` : num + 1}</p>
       <p className="title"> {title}</p>
       {/* if its open show plus, if it's close show minus */}
