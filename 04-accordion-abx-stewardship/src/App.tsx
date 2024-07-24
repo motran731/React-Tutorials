@@ -69,7 +69,9 @@ function AccordionItem({ num, title, curOpen, onOpen, children }) {
 
   function handleToggle() {
     // setIsOpen((isOpen) => !isOpen);
-    onOpen(num);
+    // onOpen(num);
+    //set  the state to null when it's already open, then the new state( the current one open is null)
+    onOpen(isOpen ? null : num);
   }
   return (
     <div className={`item ${isOpen ? "open" : ""}`} onClick={handleToggle}>
