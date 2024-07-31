@@ -1,44 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function App() {
+  const [bill, setBill] = useState();
+
+  // function handleBill(num) {
+  //   setBill(bill);
+  // }
   return (
     <div className="app">
-      <h3> How much was the bill? </h3>
+      <TipCalculator />
+    </div>
+  );
+}
+
+function TipCalculator() {
+  return (
+    <div>
       <Bill />
-      <h3> How did you like the service?</h3>
-      <Percentage />
 
-      <h3> How did yourr friend like the service?</h3>
-      <Percentage />
+      <Percentage> How did you like the service?</Percentage>
 
-      <Total />
+      <Percentage>How did your friend like the service?</Percentage>
+
+      <Output />
       <Reset />
     </div>
   );
 }
-
 function Bill() {
   return (
     <div>
-      <input type="number" />
+      <label>How much was the bill?</label>
+      <input
+        type="text"
+        placeholder="Bill value"
+        // onChange={(e) => setBill(e.target.value)}
+      />
     </div>
   );
 }
 
-function Percentage() {
+function Percentage({ children }) {
   return (
     <div>
+      <label> {children} </label>
       <select className="percentage">
-        <option value="it was good 10%"> it was good 10%</option>
-        <option value="it was great 15%"> it was great 15%</option>
-        <option value="it was amazing 20%"> it was amazing 20%</option>
+        <option value="0"> Dissatisfied (0%)</option>
+        <option value="5"> It was okay (10%)</option>
+        <option value="10%"> It was good (15%)</option>
+        <option value="20%"> Absolutely amazing! (20%)</option>
       </select>
     </div>
   );
 }
 
-function Total() {
-  return <h2> You pay $100 ($80 + $12tip)</h2>;
+function Output() {
+  return <h2> You pay $X ($tip1+ $tip2)</h2>;
 }
 
 function Reset() {
