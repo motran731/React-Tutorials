@@ -9,24 +9,37 @@ export default function App() {
 }
 
 function TipCalculator() {
-  const [bill, setBill] = useState();
+  const [bill, setBill] = useState("");
   const [percent1, setPercent1] = useState(0);
   const [percent2, setPercent2] = useState(0);
+
+  const tip = bill * ((percent1 + percent2) / 2 / 100);
+
+  function handleReset() {
+    setBill("");
+    setPercent1(0);
+    setPercent2(0);
+  }
+
   return (
     <div>
       <Bill bill={bill} setBill={setBill} />
 
-      <Percentage percent1={percent1} setPercent1={setPercent1}>
+      <Percentage percentage={percent1} setPercent={setPercent1}>
         {" "}
         How did you like the service?
       </Percentage>
 
-      <Percentage percent2={percent2} setPercent2={setPercent2}>
+      <Percentage percentage={percent2} setPercent={setPercent2}>
         How did your friend like the service?
       </Percentage>
 
-      <Output bill={bill} />
-      <Reset />
+      {bill > 0 && (
+        <>
+          <Output bill={bill} tip={tip} />
+          <Reset onReset={handleReset} />
+        </>
+      )}
     </div>
   );
 }
@@ -38,17 +51,21 @@ function Bill({ bill, setBill }) {
         type="text"
         placeholder="Bill value"
         value={bill}
-        onChange={(e) => setBill(e.target.value)}
+        onChange={(e) => setBill(Number(e.target.value))}
       />
     </div>
   );
 }
 
-function Percentage({ children }) {
+function Percentage({ children, percent, setPercent }) {
   return (
     <div>
       <label> {children} </label>
-      <select className="percentage" value="" onChange="">
+      <select
+        className="percentage"
+        value={percent}
+        onChange={(e) => setPercent(Number(e.target.value))}
+      >
         <option value="0"> Dissatisfied (0%)</option>
         <option value="5"> It was okay (10%)</option>
         <option value="10"> It was good (15%)</option>
@@ -58,10 +75,15 @@ function Percentage({ children }) {
   );
 }
 
-function Output({ bill }) {
-  return <h2> Your pay $X (${bill}+ $tip2)</h2>;
+function Output({ bill, tip }) {
+  return (
+    <h2>
+      {" "}
+      Your pay ${bill + tip} (${bill}+ ${tip})
+    </h2>
+  );
 }
 
-function Reset() {
-  return <button> Reset</button>;
+function Reset({ onReset }) {
+  return <button onClick={onReset}> Reset</button>;
 }
