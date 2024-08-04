@@ -52,7 +52,7 @@ export default function App() {
   }
 
   function handleSplitBill(value) {
-    console.log(value);
+    //console.log(value);
     setFriends((friend) =>
       friends.map((friend) =>
         friend.id === selectedFriend.id
@@ -60,6 +60,7 @@ export default function App() {
           : friend
       )
     );
+    setSelectedFriend(null);
   }
 
   return (
