@@ -66,3 +66,19 @@ function Friend({ friend }) {
     </li>
   );
 }
+
+function Button({ children }) {
+  return <button className="button"> {children} </button>;
+}
+//NOTES building static
+function FormAddFriend() {
+  return (
+    <form className="form -add-friend">
+      <label> 👫 Friend name </label>
+      <input type="text" />
+
+      <label> 🌇 Image URL </label>
+      <input type="text" />
+    </form>
+  );
+}
