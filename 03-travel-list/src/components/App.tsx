@@ -1,6 +1,3 @@
-// import { useState } from "react";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
 import { useState } from "react";
 import "../index.css";
 import Logo from "./Logo";
@@ -17,7 +14,7 @@ import Stats from "./Stats";
 export default function App() {
   const [items, setItems] = useState([]);
 
-  function handleAddItems(item) {
+  function handleAddItems(item: any) {
     setItems((items) => [...items, item]);
   }
 
