@@ -49,16 +49,20 @@ function TextExpander({
   children,
   collapsedNumWords,
   expandButtonText = 'Show more',
-  collapseButtonText,
+  collapseButtonText = 'Show less',
   buttonColor,
-  expanded,
+  expanded = false,
   className,
 }) {
+  const [isExpanded, setIsExpanded] = useState(expanded)
+
+  const displayText = isExpanded ? children : 'text'
+
   return (
     <div className={className}>
-      <span>{children} </span>
+      <span>{displayText} </span>
 
-      <button> {expandButtonText}</button>
+      <button>{isExpanded ? collapseButtonText : expandButtonText}</button>
     </div>
   )
 }
