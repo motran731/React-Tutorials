@@ -1,6 +1,6 @@
 import './App.css'
 
-import React, { Children, useState } from 'react'
+import React, { useState } from 'react'
 
 interface TextExpanderProps {
   children: string
@@ -50,7 +50,7 @@ function TextExpander({
   collapsedNumWords = 10,
   expandButtonText = 'Show more',
   collapseButtonText = 'Show less',
-  buttonColor,
+  buttonColor = 'blue',
   expanded = false,
   className,
 }) {
@@ -58,14 +58,23 @@ function TextExpander({
 
   const displayText = isExpanded
     ? children
-    : children.split(' ').slice(0, collapsedNumWords)
+    : children.split(' ').slice(0, collapsedNumWords).join(' ') + '...'
+
+  const buttonStyle = {
+    background: 'none',
+    border: 'none',
+    font: 'inherit',
+    cursor: 'pointer',
+    marginLeft: '6px',
+    color: buttonColor,
+  }
 
   return (
     <div className={className}>
       <span>{displayText} </span>
 
       <button
-        className="btn-toggle"
+        style={buttonStyle}
         onClick={() => setIsExpanded((expand) => !expand)}>
         {isExpanded ? collapseButtonText : expandButtonText}
       </button>
