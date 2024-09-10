@@ -53,7 +53,7 @@ function TextExpander({
   buttonColor = 'blue',
   expanded = false,
   className,
-}) {
+}: TextExpanderProps) {
   const [isExpanded, setIsExpanded] = useState(expanded)
 
   const displayText = isExpanded
